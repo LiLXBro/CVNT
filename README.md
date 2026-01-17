@@ -16,13 +16,17 @@
 - **Styling**: TailwindCSS
 - **Language**: TypeScript
 
+<<<<<<< HEAD
+=======
+## Offline Mode (Local DB)
+>>>>>>> f4d0c01a961f9fb4323af610004e25e255240a3c
 
 
 ## Setup Instructions
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone <https://github.com/LiLXBro/CVNT>
     cd BackendWorks
     ```
 
