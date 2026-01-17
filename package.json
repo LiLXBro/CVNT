@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npx prisma migrate deploy && npx prisma db seed && next dev",
+    "dev": "next dev",
     "build": "npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
@@ -37,8 +37,5 @@
     "prisma": "^6.19.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
-  },
-  "prisma": {
-    "seed": "node prisma/seed.js"
   }
 }

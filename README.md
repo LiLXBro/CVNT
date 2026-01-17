@@ -30,16 +30,16 @@
     ```
 
 3.  **Configure Environment Variables:**
-    Create a `.env` file in the root directory and add your PostgreSQL connection string and JWT secret:
+    Create a `.env` file in the root directory and add your JWT secret:
     ```env
-    DATABASE_URL="postgresql://user:password@localhost:5432/activity_db?schema=public"
     JWT_SECRET="your-super-secret-key"
     ```
 
-4.  **Database Migration:**
-    Push the Prisma schema to your database:
+4.  **Database Setup:**
+    Initialize the database and seed it with default data (Admin user):
     ```bash
     npx prisma db push
+    node prisma/seed.js
     ```
 
 5.  **Run the Development Server:**
