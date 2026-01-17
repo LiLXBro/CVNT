@@ -4,7 +4,6 @@
 
 - **Authentication**: Secure User Registration & Login (hashed passwords, JWT).
 - **Admin Dashboard**: Specialized interface for Admins to Manage Activities (Add, Edit, Delete).
-  - **Dynamic UI**: Distinct, high-contrast actions (Black "Add" button, Red "Delete" button).
 - **Activities**: Browse available events, view details including capacity and time.
 - **Bookings**: Authenticated users can book activities with real-time capacity validation.
 - **Validation**: Strict enforcement against double-booking and exceeding activity booking limits.
@@ -15,11 +14,6 @@
 - **Database**: PostgreSQL (via Prisma)
 - **Styling**: TailwindCSS
 - **Language**: TypeScript
-
-<<<<<<< HEAD
-=======
-## Offline Mode (Local DB)
->>>>>>> f4d0c01a961f9fb4323af610004e25e255240a3c
 
 
 ## Setup Instructions
