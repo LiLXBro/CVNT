@@ -40,66 +40,70 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className="flex min-h-[80vh] items-center justify-center">
-            <div className="w-full max-w-md p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800">
+        <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div className="w-full max-w-md bg-white p-8 rounded-xl border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative">
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#A0E7E5] border-2 border-black rounded-full z-10"></div>
+                <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-[#FFAEBC] border-2 border-black rotate-45 z-10"></div>
+
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
-                        Create Account
+                    <h1 className="text-4xl font-black text-black tracking-tighter uppercase">
+                        Join the Clique
                     </h1>
-                    <p className="text-gray-500 dark:text-gray-400 mt-2">Join us and start exploring</p>
+                    <p className="text-gray-600 font-medium mt-2">Unlock exclusive drops</p>
                 </div>
 
                 {error && (
-                    <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg text-sm border border-red-100 dark:border-red-900">
+                    <div className="mb-6 p-4 bg-[#FF6B6B] text-black font-bold border-2 border-black rounded-lg">
                         {error}
                     </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                        <label className="block text-sm font-bold text-black uppercase mb-2">Full Name</label>
                         <input
                             type="text"
                             required
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
-                            placeholder="John Doe"
+                            className="w-full px-4 py-3 bg-white border-2 border-black rounded-lg text-black placeholder-gray-400 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow"
+                            placeholder="REKHA AMITABH"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                        <label className="block text-sm font-bold text-black uppercase mb-2">Email Address</label>
                         <input
                             type="email"
                             required
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
-                            placeholder="you@example.com"
+                            className="w-full px-4 py-3 bg-white border-2 border-black rounded-lg text-black placeholder-gray-400 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow"
+                            placeholder="YOU@EXAMPLE.COM"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                        <label className="block text-sm font-bold text-black uppercase mb-2">Password</label>
                         <input
                             type="password"
                             required
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
+                            className="w-full px-4 py-3 bg-white border-2 border-black rounded-lg text-black placeholder-gray-400 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow"
                             placeholder="••••••••"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 
-                    <Button type="submit" className="w-full py-3 text-lg" isLoading={loading}>
-                        Create Account
+                    <Button type="submit" className="w-full py-4 text-lg" isLoading={loading}>
+                        Sign Up
                     </Button>
 
-                    <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-                        Already have an account?{' '}
-                        <Link href="/login" className="text-blue-600 hover:text-blue-500 font-medium">
-                            Sign in
+                    <p className="text-center text-sm text-black font-medium">
+                        Already in?{' '}
+                        <Link href="/login" className="text-[#FF90E8] hover:text-black transition-colors font-bold underline decoration-2">
+                            Log In
                         </Link>
                     </p>
                 </form>

@@ -1,0 +1,30 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Demo Admin",
+      "email": "admin@example.com",
+      "password": "$2b$10$f3KCHxgTrcPExPyuQU0eweGzY4mrEw.I5/ZFHRyYsTmgp2n90iR/C",
+      "createdAt": "2026-01-17T16:10:21.362Z",
+      "updatedAt": "2026-01-17T16:10:21.362Z"
+    },
+    {
+      "name": "Rekha",
+      "email": "shashi@shashi.com",
+      "password": "$2b$10$yIyDkM4RzxvZcGXSvP/ReOasCzPO252LUH8nsoSHrdSvPkLdDn.RO",
+      "id": 2,
+      "createdAt": "2026-01-17T16:10:58.153Z",
+      "updatedAt": "2026-01-17T16:10:58.153Z"
+    },
+    {
+      "name": "rekha",
+      "email": "rekha@gmail.com",
+      "password": "$2b$10$C1/Hei/DU3rzGFyNba8ivuJin3aJOWDY9eQH1uNW6cBuYxOsdKrjS",
+      "id": 3,
+      "createdAt": "2026-01-17T17:00:51.719Z",
+      "updatedAt": "2026-01-17T17:00:51.719Z"
+    }
+  ],
+  "activity": [],
+  "booking": []
+}

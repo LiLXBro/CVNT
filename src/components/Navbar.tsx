@@ -30,7 +30,10 @@ export default function Navbar() {
                                     My Bookings
                                 </Link>
                                 <div className="flex items-center space-x-2 pl-4 border-l border-stone-200">
-                                    <span className="text-sm font-medium text-stone-700">{user.name}</span>
+                                    <span className="text-sm font-medium text-stone-700">
+                                        {user.name}
+                                        {user.role === 'admin' && <span className="ml-1 text-xs font-bold text-red-500">[ADMIN]</span>}
+                                    </span>
                                     <button
                                         onClick={logout}
                                         className="text-sm text-red-500 hover:text-red-700 font-medium"

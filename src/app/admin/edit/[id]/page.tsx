@@ -1,18 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 
-export default function CreateActivityPage() {
+export default function EditActivityPage(props: { params: Promise<{ id: string }> }) {
+    const params = use(props.params);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
     const [capacity, setCapacity] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
     const { user, token } = useAuth();
     const router = useRouter();
+    const id = params.id;
+
+    useEffect(() => {
+        if (!token) return;
+
+        // Fetch existing data
+        fetch(`/api/activities/${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+            .then(res => {
+                if (!res.ok) throw new Error('Failed to fetch');
+                return res.json();
+            })
+            .then(data => {
+                setTitle(data.title);
+                setDescription(data.description || '');
+                // Format date for datetime-local input (YYYY-MM-DDThh:mm)
+                const d = new Date(data.date);
+                d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+                setDate(d.toISOString().slice(0, 16));
+                setCapacity(data.capacity.toString());
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Failed to load activity');
+                router.push('/');
+            })
+            .finally(() => setLoading(false));
+    }, [id, token, router]);
 
     if (!user || user.role !== 'admin') {
         return (
@@ -24,11 +55,11 @@ export default function CreateActivityPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
+        setSaving(true);
 
         try {
-            const res = await fetch('/api/activities', {
-                method: 'POST',
+            const res = await fetch(`/api/activities/${id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -42,17 +73,19 @@ export default function CreateActivityPage() {
             });
 
             if (!res.ok) {
-                throw new Error('Failed to create activity');
+                throw new Error('Failed to update activity');
             }
 
             router.push('/');
         } catch (error) {
-            alert('Error creating activity');
+            alert('Error updating activity');
             console.error(error);
         } finally {
-            setLoading(false);
+            setSaving(false);
         }
     };
+
+    if (loading) return <div className="p-8 text-center font-bold">Loading...</div>;
 
     return (
         <div className="max-w-md mx-auto">
@@ -60,7 +93,7 @@ export default function CreateActivityPage() {
                 <div className="absolute -top-4 -left-4 w-8 h-8 bg-[#A0E7E5] border-2 border-black rounded-full z-10"></div>
 
                 <h1 className="text-3xl font-black text-black uppercase tracking-tighter mb-8 text-center">
-                    Create New Activity
+                    Edit Activity
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -111,9 +144,18 @@ export default function CreateActivityPage() {
                         </div>
                     </div>
 
-                    <Button type="submit" className="w-full py-3 text-lg mt-4" isLoading={loading}>
-                        Create Activity
-                    </Button>
+                    <div className="flex gap-4 pt-4">
+                        <Button
+                            type="button"
+                            onClick={() => router.back()}
+                            className="flex-1 bg-white hover:bg-gray-50 text-black border-2 border-black"
+                        >
+                            Cancel
+                        </Button>
+                        <Button type="submit" className="flex-1" isLoading={saving}>
+                            Save Changes
+                        </Button>
+                    </div>
                 </form>
             </div>
         </div>

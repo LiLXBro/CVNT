@@ -1,14 +1,13 @@
 # Activity Booking API
 
-A robust Activity Booking Application built with Next.js (App Router), Prisma (PostgreSQL), and TailwindCSS. Features secure JWT authentication and a premium UI.
-
 ## Features
 
 - **Authentication**: Secure User Registration & Login (hashed passwords, JWT).
-- **Activities**: Browse, create (Admin), and view details of activities.
-- **Bookings**: Book available activities, view personal booking history.
-- **Validation**: Prevents double-booking and exceeding capacity.
-- **UI**: Modern, responsive design with Dark Mode support.
+- **Admin Dashboard**: Specialized interface for Admins to Manage Activities (Add, Edit, Delete).
+  - **Dynamic UI**: Distinct, high-contrast actions (Black "Add" button, Red "Delete" button).
+- **Activities**: Browse available events, view details including capacity and time.
+- **Bookings**: Authenticated users can book activities with real-time capacity validation.
+- **Validation**: Strict enforcement against double-booking and exceeding activity booking limits.
 
 ## Tech Stack
 
@@ -16,6 +15,21 @@ A robust Activity Booking Application built with Next.js (App Router), Prisma (P
 - **Database**: PostgreSQL (via Prisma)
 - **Styling**: TailwindCSS
 - **Language**: TypeScript
+
+## 🚀 Offline Mode (Local DB)
+
+**No Database? No Problem.**
+This project includes a built-in **Mock Database** that allows you to run the full application without setting up PostgreSQL or Supabase.
+
+### How it works:
+1.  The app checks for `DATABASE_URL` in your `.env` file.
+2.  If it's missing, it automatically switches to a **Local JSON Database**.
+3.  A file named `local-db.json` will be created in the root directory.
+4.  All Users, Activities, and Bookings are saved to this file.
+
+### Technical Implementation:
+- **`src/lib/prisma.ts`**: Contains conditional logic to export either the real `PrismaClient` or a `MockDB` instance.
+- **`src/lib/mock-db.ts`**: A custom class that replicates Prisma's `findUnique`, `create`, `findMany`, etc., methods but reads/writes to a JSON file using Node.js `fs`.
 
 ## Setup Instructions
 
@@ -58,7 +72,7 @@ A robust Activity Booking Application built with Next.js (App Router), Prisma (P
 ```bash
 curl -X POST http://localhost:3000/api/auth/register \
   -H "Content-Type: application/json" \
-  -d '{"name": "John Doe", "email": "john@example.com", "password": "password123"}'
+  -d '{"name": "Rekha Amitabh", "email": "rekha@example.com", "password": "password123"}'
 ```
 
 #### Login

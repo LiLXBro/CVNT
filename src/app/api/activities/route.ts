@@ -29,10 +29,10 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
         }
 
-        // Optional: Check if user is admin
-        // if (decoded.role !== 'admin') { ... } 
-        // Requirement says "only authenticated user, optionally make admin-only". 
-        // I'll stick to authenticated user for now as per requirement, but maybe add a comment.
+        // Enforce Admin Role for creation to match PUT/DELETE security
+        if (decoded.role !== 'admin') {
+            return NextResponse.json({ error: 'Forbidden: Admin only' }, { status: 403 });
+        }
 
         const { title, description, date, capacity } = await req.json();
 
