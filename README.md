@@ -16,20 +16,7 @@
 - **Styling**: TailwindCSS
 - **Language**: TypeScript
 
-## 🚀 Offline Mode (Local DB)
 
-**No Database? No Problem.**
-This project includes a built-in **Mock Database** that allows you to run the full application without setting up PostgreSQL or Supabase.
-
-### How it works:
-1.  The app checks for `DATABASE_URL` in your `.env` file.
-2.  If it's missing, it automatically switches to a **Local JSON Database**.
-3.  A file named `local-db.json` will be created in the root directory.
-4.  All Users, Activities, and Bookings are saved to this file.
-
-### Technical Implementation:
-- **`src/lib/prisma.ts`**: Contains conditional logic to export either the real `PrismaClient` or a `MockDB` instance.
-- **`src/lib/mock-db.ts`**: A custom class that replicates Prisma's `findUnique`, `create`, `findMany`, etc., methods but reads/writes to a JSON file using Node.js `fs`.
 
 ## Setup Instructions
 
@@ -79,7 +66,7 @@ curl -X POST http://localhost:3000/api/auth/register \
 ```bash
 curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email": "john@example.com", "password": "password123"}'
+  -d '{"email": "rekha@example.com", "password": "password123"}'
 ```
 **Response:** `{"token": "..."}`. Use this token in the `Authorization` header for protected routes (`Bearer <token>`).
 
