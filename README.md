@@ -16,7 +16,7 @@
 - **Styling**: TailwindCSS
 - **Language**: TypeScript
 
-## 🚀 Offline Mode (Local DB)
+## Offline Mode (Local DB)
 
 **No Database? No Problem.**
 This project includes a built-in **Mock Database** that allows you to run the full application without setting up PostgreSQL or Supabase.
@@ -35,7 +35,7 @@ This project includes a built-in **Mock Database** that allows you to run the fu
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone <https://github.com/LiLXBro/CVNT>
     cd BackendWorks
     ```
 
